@@ -8,15 +8,13 @@ use Luxifer\Leboncoin\Command\SetupCommand;
 
 class Application extends BaseApplication
 {
-    const VERSION = '0.0.1';
-
     protected $container;
 
     public function __construct()
     {
         $this->container = new Container();
 
-        parent::__construct('leboncoin-alert', self::VERSION);
+        parent::__construct('Leboncoin CLI', file_get_contents(__DIR__.'/../../../VERSION'));
     }
 
     protected function getDefaultCommands()
