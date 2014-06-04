@@ -1,0 +1,5 @@
+connection:
+    driver: pdo_sqlite
+    user: ~
+    password: ~
+    path: var/database.sqlite

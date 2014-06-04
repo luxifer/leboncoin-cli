@@ -1,0 +1,22 @@
+{
+    "name": "luxifer/leboncoin-cli",
+    "require": {
+        "guzzle/guzzle": "~3.9",
+        "symfony/console": "*",
+        "symfony/config": "*",
+        "symfony/yaml": "*",
+        "pimple/pimple": "~2.0",
+        "doctrine/dbal": "~2.4",
+        "symfony/dom-crawler": "*",
+        "symfony/css-selector": "*"
+    },
+    "authors": [
+        {
+            "name": "Florent Viel",
+            "email": "florent.viel69@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "": "src/" }
+    }
+}

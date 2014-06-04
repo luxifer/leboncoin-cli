@@ -1,0 +1,3 @@
+vendor
+config/database.yml
+config/leboncoin.yml

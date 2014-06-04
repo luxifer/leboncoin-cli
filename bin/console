@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+require_once __DIR__.'/../vendor/autoload.php';
+
+use Luxifer\Leboncoin\Application;
+
+$app = new Application();
+$app->run();
