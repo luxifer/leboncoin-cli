@@ -11,4 +11,16 @@ class BidManager
     {
         $this->conn = $conn;
     }
+
+    public function add(array $bid)
+    {
+        if (!$this->find($bid['bid_id'])) {
+            $this->conn->insert('bid', $bid);
+        }
+    }
+
+    protected function find($bidId)
+    {
+        return $this->conn->fetchAssoc('SELECT * FROM bid WHERE bid_id = ?', array($bidId));
+    }
 }

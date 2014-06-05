@@ -60,7 +60,7 @@ class Client extends BaseClient
         $bid['bid_id'] = $matches['id'];
 
         $category = trim($node->filter('.category')->text());
-        $bid['isPro'] = strstr($category, '(pro)') ? true : false;
+        $bid['is_pro'] = strstr($category, '(pro)') ? true : false;
 
         list($date, $time) = $node->filter('.date > div')->each(function ($node, $i) {
             return $node->text();

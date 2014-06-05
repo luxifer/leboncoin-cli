@@ -39,6 +39,10 @@ class SetupCommand extends ContainerAwareCommand
         $bidTable->addColumn('is_pro', 'boolean', array('default' => false));
         $bidTable->addColumn('created_at', 'datetime');
         $bidTable->addColumn('inserted_at', 'datetime', array('default' => 'CURRENT_TIMESTAMP'));
+        $bidTable->setPrimaryKey(array('id'));
+        $bidTable->addUniqueIndex(array('bid_id'));
+        $bidTable->addUniqueIndex(array('url'));
+        $bidTable->addUniqueIndex(array('picture'));
 
         $sql = $fromSchema->getMigrateToSql($toSchema, $container['db']->getDatabasePlatform());
 

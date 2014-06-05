@@ -27,9 +27,11 @@ class FetchCommand extends ContainerAwareCommand
             $output->writeln($container['client']->getRequestUrl());
 
             foreach($bids as $bid) {
+                $container['bid.manager']->add($bid);
+
                 $prefix = '';
 
-                if ($bid['isPro']) {
+                if ($bid['is_pro']) {
                     $prefix = '<bg=yellow;fg=black>[pro]</bg=yellow;fg=black> ';
                 }
 
