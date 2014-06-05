@@ -56,7 +56,7 @@ bin/console help
 
 ## Cron
 
-Setup a no cron task with the following command:
+Setup a cron task with the following command:
 
 ```
 /path/to/installation/bin/console notify -q
