@@ -1,3 +1,4 @@
 vendor
 config/database.yml
 config/leboncoin.yml
+config/mailer.yml

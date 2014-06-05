@@ -1,0 +1,3 @@
+swift:
+    type: sendmail
+    path: /usr/sbin/sendmail -bs

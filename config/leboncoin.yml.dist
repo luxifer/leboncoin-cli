@@ -1,12 +1,4 @@
 url: http://www.leboncoin.fr
-criterias:
-    location_grenoble:
-        title: 'Location T4 a Grenoble pour moins de 900 euro'
-        region: rhone_alpes
-        department: isere
-        category: locations
-        location: 'Grenoble 38000'
-        filters:
-            mre: { value: 900 }
-            ros: { value: 4 }
-            furn: { value: 2 }
+from_email: frommail@domain.com
+to_email: tomail@domain.com
+criterias: ~
