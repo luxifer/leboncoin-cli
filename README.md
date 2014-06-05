@@ -64,6 +64,7 @@ Setup a no cron task with the following command:
 
 ## TODO
 
+* Setup a proxy (port 80 closed for OVH and Online IPs) **[urgent]**
 * Create a makefile to bundle the application
 
 ## TODO later
