@@ -18,10 +18,12 @@ class LeboncoinConfiguration implements ConfigurationInterface
                     ->useAttributeAsKey('name')
                     ->prototype('array')
                         ->children()
-                            ->scalarNode('region')->isRequired()->cannotBeEmpty()->end()
+                            ->scalarNode('q')->defaultNull()->end() // Recherche
+                            ->scalarNode('region')->isRequired()->cannotBeEmpty()->end() // Région
                             ->scalarNode('title')->isRequired()->cannotBeEmpty()->end()
-                            ->scalarNode('category')->isRequired()->cannotBeEmpty()->end() // Catégorie
-                            ->scalarNode('location')->end() // Ville
+                            ->scalarNode('category')->defaultValue('annonces')->end() // Catégorie
+                            ->scalarNode('location')->defaultNull()->end() // Ville
+                            ->scalarNode('department')->end() // Département
                             ->scalarNode('f')
                                 ->defaultValue('a')
                                 ->validate()
@@ -42,13 +44,14 @@ class LeboncoinConfiguration implements ConfigurationInterface
     protected function addParametersNode()
     {
         $builder = new TreeBuilder();
-        $nodes = $builder->root('parameters');
+        $nodes = $builder->root('filters');
 
         $nodes
-            ->children()
-                ->integerNode('mre')->end() // Locations : Loyer max
-                ->integerNode('ros')->end() // Locations : Pièces min
-                ->integerNode('furn')->treatTrueLike(1)->treatFalseLike(2) // Locations : Meublé / Non meublé
+            ->useAttributeAsKey('name')
+            ->prototype('array')
+                ->children()
+                    ->scalarNode('value')->end()
+                ->end()
             ->end()
         ;
 
