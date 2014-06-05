@@ -19,6 +19,7 @@ class Container extends \Pimple
         $this->setupDatabase();
         $this->setupClient();
         $this->setupManager();
+        $this->setupTwig();
     }
 
     protected function registerConfiguration()
@@ -59,6 +60,15 @@ class Container extends \Pimple
     {
         $this['bid.manager'] = function ($container) {
             return new BidManager($container['db']);
+        };
+    }
+
+    protected function setupTwig()
+    {
+        $this['twig'] = function ($container) {
+            $loader = new \Twig_Loader_Filesystem(__DIR__.'/../../../templates');
+
+            return new \Twig_Environment($loader);
         };
     }
 }

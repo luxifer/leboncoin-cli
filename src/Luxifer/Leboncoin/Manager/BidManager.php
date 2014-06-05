@@ -23,4 +23,9 @@ class BidManager
     {
         return $this->conn->fetchAssoc('SELECT * FROM bid WHERE bid_id = ?', array($bidId));
     }
+
+    public function last()
+    {
+        return $this->conn->fetchAssoc('SELECT * FROM bid ORDER BY inserted_at DESC LIMIT 1');
+    }
 }
