@@ -9,7 +9,10 @@
         "doctrine/dbal": "~2.4",
         "symfony/dom-crawler": "*",
         "symfony/css-selector": "*",
-        "twig/twig": "*"
+        "twig/twig": "*",
+        "rhumsaa/array_column": "*",
+        "symfony/validator": "*",
+        "swiftmailer/swiftmailer": "*"
     },
     "authors": [
         {

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "9a8cd91d58fb32104829ded951d306b0",
+    "hash": "212bd6ee5850b8162011c66c1a5ad298",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -620,6 +620,100 @@
             "time": "2014-02-10 08:05:32"
         },
         {
+            "name": "rhumsaa/array_column",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/array_column.git",
+                "reference": "c09744baae0e023d1021055f9c65755b88a9721f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramsey/array_column/zipball/c09744baae0e023d1021055f9c65755b88a9721f",
+                "reference": "c09744baae0e023d1021055f9c65755b88a9721f",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/array_column.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Ramsey",
+                    "homepage": "http://benramsey.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Provides functionality for array_column() to projects using PHP earlier than version 5.5.",
+            "homepage": "https://github.com/ramsey/array_column",
+            "keywords": [
+                "array",
+                "array_column",
+                "column"
+            ],
+            "time": "2013-07-22 16:12:38"
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "v5.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiftmailer/swiftmailer.git",
+                "reference": "043e336b871f17a117f76ef8e190eddfc04c8d48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/043e336b871f17a117f76ef8e190eddfc04c8d48",
+                "reference": "043e336b871f17a117f76ef8e190eddfc04c8d48",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.2-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Chris Corbyn"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.org",
+            "keywords": [
+                "mail",
+                "mailer"
+            ],
+            "time": "2014-05-08 08:11:19"
+        },
+        {
             "name": "symfony/config",
             "version": "v2.5.0",
             "target-dir": "Symfony/Component/Config",
@@ -941,6 +1035,135 @@
             "description": "Symfony Filesystem Component",
             "homepage": "http://symfony.com",
             "time": "2014-04-16 10:36:21"
+        },
+        {
+            "name": "symfony/translation",
+            "version": "v2.5.0",
+            "target-dir": "Symfony/Component/Translation",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Translation.git",
+                "reference": "5f23265dcf8927a84be832608069c9edca3cf5f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Translation/zipball/5f23265dcf8927a84be832608069c9edca3cf5f4",
+                "reference": "5f23265dcf8927a84be832608069c9edca3cf5f4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/config": "~2.0",
+                "symfony/yaml": "~2.2"
+            },
+            "suggest": {
+                "symfony/config": "",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Translation\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Translation Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-05-22 13:47:45"
+        },
+        {
+            "name": "symfony/validator",
+            "version": "v2.5.0",
+            "target-dir": "Symfony/Component/Validator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Validator.git",
+                "reference": "62f6f7735fbd3897b9347ae60fda4a40d0122640"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Validator/zipball/62f6f7735fbd3897b9347ae60fda4a40d0122640",
+                "reference": "62f6f7735fbd3897b9347ae60fda4a40d0122640",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/translation": "~2.0"
+            },
+            "require-dev": {
+                "doctrine/annotations": "~1.0",
+                "doctrine/cache": "~1.0",
+                "egulias/email-validator": "~1.0",
+                "symfony/config": "~2.2",
+                "symfony/expression-language": "~2.4",
+                "symfony/http-foundation": "~2.1",
+                "symfony/intl": "~2.3",
+                "symfony/property-access": "~2.2",
+                "symfony/yaml": "~2.0"
+            },
+            "suggest": {
+                "doctrine/annotations": "For using the annotation mapping. You will also need doctrine/cache.",
+                "doctrine/cache": "For using the default cached annotation reader and metadata cache.",
+                "egulias/email-validator": "Strict (RFC compliant) email validation",
+                "symfony/config": "",
+                "symfony/expression-language": "For using the 2.4 Expression validator",
+                "symfony/http-foundation": "",
+                "symfony/intl": "",
+                "symfony/property-access": "For using the 2.4 Validator API",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Validator\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Validator Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-05-31 02:02:56"
         },
         {
             "name": "symfony/yaml",
