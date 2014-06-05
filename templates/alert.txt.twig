@@ -1,0 +1,14 @@
+# Alerte Leboncoin.fr
+
+## {{title}}
+
+[Voir la recherche]({{url}})
+
+{% for bid in bids %}
+* {% if bid.is_pro %}*(pro)* {% endif %}{{bid.title}}{% if bid.price %} - **{{bid.price}}**{% endif %} - {{bid.created_at|date('\\l\\e d/m/Y \\a H:i')}}
+  {{bid.placement}}
+  [Voir l'annonce]({{bid.url}})
+
+{% endfor %}
+
+[Github](https://github.com/luxifer/leboncoin-cli) | [Unsubscribe](https://github.com/luxifer/leboncoin-cli/blob/master/README.md)
