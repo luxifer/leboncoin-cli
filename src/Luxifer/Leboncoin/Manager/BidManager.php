@@ -14,9 +14,32 @@ class BidManager
 
     public function add(array $bid)
     {
-        if (!$this->find($bid['bid_id'])) {
+        $result = $this->find($bid['bid_id']);
+
+        if (!$result) {
             $this->conn->insert('bid', $bid);
+
+            return $this->conn->lastInsertId();
         }
+
+        return $result['id'];
+    }
+
+    public function link($alertId, $bidId)
+    {
+        if (!$this->linkExist($alertId, $bidId)) {
+            $this->conn->insert('alert_bid', array(
+                'alert_id' => $alertId,
+                'bid_id'   => $bidId
+            ));
+        }
+    }
+
+    public function sent(array $ids)
+    {
+        array_walk($ids, function ($id) {
+            $this->conn->update('bid', array('is_sent' => true), array('id' => $id));
+        });
     }
 
     protected function find($bidId)
@@ -24,8 +47,8 @@ class BidManager
         return $this->conn->fetchAssoc('SELECT * FROM bid WHERE bid_id = ?', array($bidId));
     }
 
-    public function last()
+    protected function linkExist($alertId, $bidId)
     {
-        return $this->conn->fetchAssoc('SELECT * FROM bid ORDER BY inserted_at DESC LIMIT 1');
+        return $this->conn->fetchAssoc('SELECT * FROM alert_bid WHERE alert_id = ? AND bid_id = ?', array($alertId, $bidId));
     }
 }
