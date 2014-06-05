@@ -7,6 +7,8 @@ use Luxifer\Leboncoin\Datetime\LeboncoinDatetime;
 
 class Client extends BaseClient
 {
+    protected $requestUrl;
+
     public function __construct($baseUrl = '')
     {
         parent::__construct($baseUrl);
@@ -14,17 +16,26 @@ class Client extends BaseClient
 
     public function fetch($criteria)
     {
+        array_walk($criteria['filters'], function (&$item) {
+            $item = $item['value'];
+        });
+
         $query = array_merge(
             array(
                 'location' => $criteria['location'],
-                'f'        => $criteria['f']
+                'f'        => $criteria['f'],
+                'q'        => $criteria['q']
             ),
-            $criteria['parameters']
+            $criteria['filters']
         );
 
-        $request = $this->get(sprintf('/%s/offres/%s/', $criteria['category'], $criteria['region']), null, array(
+        $query = array_filter($query);
+
+        $request = $this->get(sprintf('/%s/offres/%s/%s', $criteria['category'], $criteria['region'], (isset($criteria['department']) ? $criteria['department'].'/' : '')), null, array(
             'query' => $query
         ));
+
+        $this->requestUrl = $request->getUrl();
 
         $response = $request->send();
         $crawler = new Crawler((string) $response->getBody());
@@ -44,6 +55,10 @@ class Client extends BaseClient
         $bid['price'] = trim($node->filter('.price')->text());
         $bid['url'] = $node->attr('href');
 
+        preg_match('@/\w+/(?P<id>\d+)\.htm\?ca=\d+_s@', $bid['url'], $matches);
+
+        $bid['bid_id'] = $matches['id'];
+
         $category = trim($node->filter('.category')->text());
         $bid['isPro'] = strstr($category, '(pro)') ? true : false;
 
@@ -51,8 +66,22 @@ class Client extends BaseClient
             return $node->text();
         });
 
-        $bid['date'] = new LeboncoinDatetime($date, $time);
+        $bid['created_at'] = new LeboncoinDatetime($date, $time);
+        $bid['picture'] = $node->filter('.image')->children()->count() ? $node->filter('.image-and-nb > img')->attr('src') : null;
+
+        $placement = trim($node->filter('.placement')->text());
+        $placement = explode('/', $placement);
+        $placement = array_map(function ($item) {
+            return trim($item);
+        }, $placement);
+
+        $bid['placement'] = implode(' / ', $placement);
 
         return $bid;
+    }
+
+    public function getRequestUrl()
+    {
+        return $this->requestUrl;
     }
 }

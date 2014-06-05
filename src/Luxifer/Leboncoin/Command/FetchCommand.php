@@ -24,6 +24,7 @@ class FetchCommand extends ContainerAwareCommand
         foreach ($config['leboncoin']['criterias'] as $criteria) {
             $output->writeln(sprintf('<info>%s</info>', $criteria['title']));
             $bids = $container['client']->fetch($criteria);
+            $output->writeln($container['client']->getRequestUrl());
 
             foreach($bids as $bid) {
                 $prefix = '';
@@ -32,8 +33,11 @@ class FetchCommand extends ContainerAwareCommand
                     $prefix = '<bg=yellow;fg=black>[pro]</bg=yellow;fg=black> ';
                 }
 
-                $output->writeln('  - '.$prefix.$bid['title'].' - '.sprintf('<fg=red>%s</fg=red>', $bid['price']).' - '.$bid['date']->format('d/m/Y H:i'));
-                $output->writeln('    '.$bid['url']);
+                $output->writeln('  - '.$prefix.$bid['title'].' - '.sprintf('<fg=red>%s</fg=red>', $bid['price']).' - '.$bid['created_at']->format('d/m/Y H:i'));
+                $output->writeln('    Id: '.$bid['bid_id']);
+                $output->writeln('    Url: '.$bid['url']);
+                $output->writeln('    Picture: '.$bid['picture']);
+                $output->writeln('    Placement: '.$bid['placement']);
                 $output->writeln('');
             }
         }
