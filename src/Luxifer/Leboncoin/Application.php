@@ -5,6 +5,7 @@ use Symfony\Component\Console\Application as BaseApplication;
 use Symfony\Component\Console\Input\InputInterface;
 use Luxifer\Leboncoin\Command\FetchCommand;
 use Luxifer\Leboncoin\Command\SetupCommand;
+use Luxifer\Leboncoin\Command\NotifyCommand;
 
 class Application extends BaseApplication
 {
@@ -23,6 +24,7 @@ class Application extends BaseApplication
 
         $defaultCommands[] = new FetchCommand();
         $defaultCommands[] = new SetupCommand();
+        $defaultCommands[] = new NotifyCommand();
 
         return $defaultCommands;
     }
