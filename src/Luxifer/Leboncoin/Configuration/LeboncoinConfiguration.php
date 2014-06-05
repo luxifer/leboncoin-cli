@@ -3,6 +3,8 @@ namespace Luxifer\Leboncoin\Configuration;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Constraints\Email;
 
 class LeboncoinConfiguration implements ConfigurationInterface
 {
@@ -10,10 +12,33 @@ class LeboncoinConfiguration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('leboncoin');
+        $validator = Validation::createValidator();
 
         $rootNode
             ->children()
                 ->scalarNode('url')->defaultValue('http://www.leboncoin.fr')->end()
+                ->scalarNode('from_email')
+                    ->isRequired()->cannotBeEmpty()
+                    ->validate()
+                        ->ifTrue(function ($value) use ($validator) {
+                            $violations = $validator->validateValue($value, new Email());
+
+                            return $violations->count();
+                        })
+                        ->thenInvalid('The email %s is invalid')
+                    ->end()
+                ->end()
+                ->scalarNode('to_email')
+                    ->isRequired()->cannotBeEmpty()
+                    ->validate()
+                        ->ifTrue(function ($value) use ($validator) {
+                            $violations = $validator->validateValue($value, new Email());
+
+                            return $violations->count();
+                        })
+                        ->thenInvalid('The email %s is invalid')
+                    ->end()
+                ->end()
                 ->arrayNode('criterias')
                     ->useAttributeAsKey('name')
                     ->prototype('array')
