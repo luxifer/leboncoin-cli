@@ -21,13 +21,15 @@ class FetchCommand extends ContainerAwareCommand
         $container = $this->getContainer();
         $config = $this->getConfiguration();
 
-        foreach ($config['leboncoin']['criterias'] as $criteria) {
+        foreach ($config['leboncoin']['criterias'] as $key => $criteria) {
             $output->writeln(sprintf('<info>%s</info>', $criteria['title']));
             $bids = $container['client']->fetch($criteria);
             $output->writeln($container['client']->getRequestUrl());
+            $alertId = $container['alert.manager']->add($key, $criteria, $container['client']->getRequestUrl());
 
             foreach($bids as $bid) {
-                $container['bid.manager']->add($bid);
+                $bidId = $container['bid.manager']->add($bid);
+                $container['bid.manager']->link($alertId, $bidId);
 
                 $prefix = '';
 
