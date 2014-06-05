@@ -8,6 +8,7 @@ use Luxifer\Leboncoin\Configuration\LeboncoinConfiguration;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
 use Luxifer\Leboncoin\Http\Client;
+use Luxifer\Leboncoin\Manager\BidManager;
 
 class Container extends \Pimple
 {
@@ -17,6 +18,7 @@ class Container extends \Pimple
         $this->registerConfiguration();
         $this->setupDatabase();
         $this->setupClient();
+        $this->setupManager();
     }
 
     protected function registerConfiguration()
@@ -50,6 +52,13 @@ class Container extends \Pimple
     {
         $this['client'] = function($container) {
             return new Client($container['configuration']['leboncoin']['url']);
+        };
+    }
+
+    protected function setupManager()
+    {
+        $this['bid.manager'] = function ($container) {
+            return new BidManager($container['db']);
         };
     }
 }
