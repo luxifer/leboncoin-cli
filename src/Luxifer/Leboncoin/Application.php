@@ -11,9 +11,9 @@ class Application extends BaseApplication
 {
     protected $container;
 
-    public function __construct()
+    public function __construct($container)
     {
-        $this->container = new Container();
+        $this->container = $container;
 
         parent::__construct('Leboncoin CLI', file_get_contents(__DIR__.'/../../../VERSION'));
     }

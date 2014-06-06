@@ -4,5 +4,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use Luxifer\Leboncoin\Application;
 
-$app = new Application();
+$container = require_once __DIR__.'/../src/container.php';
+
+$app = new Application($container);
 $app->run();
