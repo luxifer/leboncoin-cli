@@ -1,5 +1,9 @@
 # Leboncoin CLI
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/luxifer/leboncoin-cli/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/luxifer/leboncoin-cli/?branch=master)
+
+Leboncoin CLI is a software to make request to Leboncoin.fr from the shell. Request are stored in a configuration file. You can have multiple request in thfis file. Every time a new bid is fetched it is stored on a database. Then you can send these bids by mail.
+
 ## Features
 
 * Query Leboncoin based on a yaml config
