@@ -7,7 +7,6 @@ use Luxifer\Leboncoin\Configuration\MailerConfiguration;
 use Luxifer\Leboncoin\Configuration\LeboncoinConfiguration;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
-use Luxifer\Leboncoin\Http\Client;
 use Luxifer\Leboncoin\Manager\BidManager;
 use Luxifer\Leboncoin\Manager\AlertManager;
 use Guzzle\Http\Client as GuzzleClient;
