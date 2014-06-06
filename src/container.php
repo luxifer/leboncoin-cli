@@ -10,6 +10,8 @@ use Doctrine\DBAL\DriverManager;
 use Luxifer\Leboncoin\Http\Client;
 use Luxifer\Leboncoin\Manager\BidManager;
 use Luxifer\Leboncoin\Manager\AlertManager;
+use Guzzle\Http\Client as GuzzleClient;
+use Luxifer\Leboncoin\Http\Client as LeboncoinClient;
 
 $app = new \Pimple();
 
@@ -42,8 +44,12 @@ $app['db'] = function($app) {
     return DriverManager::getConnection($app['configuration']['database']['connection'], new Configuration());
 };
 
+$app['guzzle'] = function ($app) {
+    return new GuzzleClient($app['configuration']['leboncoin']['url']);
+};
+
 $app['client'] = function($app) {
-    return new Client($app['configuration']['leboncoin']['url']);
+    return new LeboncoinClient($app['guzzle']);
 };
 
 $app['bid.manager'] = function ($app) {

@@ -1,17 +1,18 @@
 <?php
 namespace Luxifer\Leboncoin\Http;
 
-use Guzzle\Http\Client as BaseClient;
+use Guzzle\Http\Client as GuzzleClient;
 use Symfony\Component\DomCrawler\Crawler;
 use Luxifer\Leboncoin\Datetime\LeboncoinDatetime;
 
-class Client extends BaseClient
+class Client
 {
     protected $requestUrl;
+    protected $guzzle;
 
-    public function __construct($baseUrl = '')
+    public function __construct(GuzzleClient $guzzle)
     {
-        parent::__construct($baseUrl);
+        $this->guzzle = $guzzle;
     }
 
     public function fetch($criteria)
@@ -31,7 +32,7 @@ class Client extends BaseClient
 
         $query = array_filter($query);
 
-        $request = $this->get(sprintf('/%s/offres/%s/%s', $criteria['category'], $criteria['region'], (isset($criteria['department']) ? $criteria['department'].'/' : '')), null, array(
+        $request = $this->guzzle->get(sprintf('/%s/offres/%s/%s', $criteria['category'], $criteria['region'], (isset($criteria['department']) ? $criteria['department'].'/' : '')), null, array(
             'query' => $query
         ));
 
