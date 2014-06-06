@@ -64,7 +64,7 @@ class Client
         $bid = array();
 
         $bid['title'] = $node->attr('title');
-        $bid['price'] = trim($node->filter('.price')->text());
+        $bid['price'] = $node->filter('.price')->count() ? trim($node->filter('.price')->text()) : null;
         $bid['url'] = $node->attr('href');
 
         preg_match('@/\w+/(?P<id>\d+)\.htm\?ca=\d+_s@', $bid['url'], $matches);
