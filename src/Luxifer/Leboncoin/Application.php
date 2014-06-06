@@ -2,7 +2,6 @@
 namespace Luxifer\Leboncoin;
 
 use Symfony\Component\Console\Application as BaseApplication;
-use Symfony\Component\Console\Input\InputInterface;
 use Luxifer\Leboncoin\Command\FetchCommand;
 use Luxifer\Leboncoin\Command\SetupCommand;
 use Luxifer\Leboncoin\Command\NotifyCommand;
