@@ -15,7 +15,13 @@ class Client
         $this->guzzle = $guzzle;
     }
 
-    public function fetch($criteria)
+    /**
+     * Fetch bids form Leboncoin
+     *
+     * @param array $criteria request configuration
+     * @return array           list of bids
+     */
+    public function fetch(array $criteria)
     {
         array_walk($criteria['filters'], function (&$item) {
             $item = $item['value'];
@@ -48,6 +54,11 @@ class Client
         return $bids;
     }
 
+    /**
+     * Transform a bid HTML node into a bid array
+     * @param  Crawler $node HTML bid node
+     * @return array        bid
+     */
     protected function processBid(Crawler $node)
     {
         $bid = array();
@@ -81,6 +92,9 @@ class Client
         return $bid;
     }
 
+    /**
+     * @return string request url
+     */
     public function getRequestUrl()
     {
         return $this->requestUrl;

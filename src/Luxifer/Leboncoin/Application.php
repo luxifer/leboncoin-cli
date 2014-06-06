@@ -29,11 +29,21 @@ class Application extends BaseApplication
         return $defaultCommands;
     }
 
+    /**
+     * Shortcut to get the configuration
+     *
+     * @return array processed configuration
+     */
     public function getConfiguration()
     {
         return $this->container['configuration'];
     }
 
+    /**
+     * Return the Pimple container
+     *
+     * @return \Pimple container
+     */
     public function getContainer()
     {
         return $this->container;

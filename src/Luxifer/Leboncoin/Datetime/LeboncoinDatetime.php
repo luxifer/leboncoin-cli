@@ -3,6 +3,10 @@ namespace Luxifer\Leboncoin\Datetime;
 
 class LeboncoinDatetime extends \DateTime
 {
+    /**
+     * @param string $date date as displayed on the website
+     * @param string $time time as displayed on the website
+     */
     public function __construct($date, $time)
     {
         parent::__construct();
@@ -14,6 +18,11 @@ class LeboncoinDatetime extends \DateTime
         $this->setTime($hour, $second);
     }
 
+    /**
+     * Transform the date part into a php on
+     *
+     * @param  string $key date as displayed on the website
+     */
     private function fullMatch($key)
     {
         $config = array(
@@ -32,6 +41,11 @@ class LeboncoinDatetime extends \DateTime
         $this->setTimestamp(strtotime($config[$key]));
     }
 
+    /**
+     * Transform the month displayed on the website into the corresponding integer value
+     * @param  string $key month
+     * @return integer      month
+     */
     private function monthMatch($key)
     {
         $months = array(
@@ -52,6 +66,11 @@ class LeboncoinDatetime extends \DateTime
         return $months[$key];
     }
 
+    /**
+     * Format the object to a string corresponding at the SQL format
+     *
+     * @return string datetime
+     */
     public function __toString()
     {
         return $this->format('Y-m-d H:i:s');
