@@ -44,7 +44,15 @@ $app['db'] = function($app) {
 };
 
 $app['guzzle'] = function ($app) {
-    return new GuzzleClient($app['configuration']['leboncoin']['url']);
+    $guzzle = new GuzzleClient($app['configuration']['leboncoin']['url']);
+
+    if (null !== $proxy = $app['configuration']['leboncoin']['proxy']) {
+        $guzzle->setConfig(array(
+            'proxy' => $proxy
+        ));
+    }
+
+    return $guzzle;
 };
 
 $app['client'] = function($app) {

@@ -17,6 +17,7 @@ class LeboncoinConfiguration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('url')->defaultValue('http://www.leboncoin.fr')->end()
+                ->scalarNode('proxy')->defaultNull()->end()
                 ->scalarNode('from_email')
                     ->isRequired()->cannotBeEmpty()
                     ->validate()
