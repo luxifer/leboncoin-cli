@@ -1,7 +1,9 @@
 TARGET = leboncoin-cli-$(shell cat VERSION)
 ROOT = $(shell pwd)
 
-dist:
+all: dist
+
+dist: dependencies
 	mkdir /tmp/$(TARGET)
 	cp -r . /tmp/$(TARGET)
 	cd /tmp/$(TARGET) $$ \
@@ -12,3 +14,9 @@ dist:
 		tar czf $(TARGET).tar.gz $(TARGET)
 	mv /tmp/$(TARGET).tar.gz $(ROOT)
 	rm -rf /tmp/$(TARGET)
+
+dependencies:
+	if [ ! -e "composer.phar" ]; then curl -sS https://getcomposer.org/installer | php; fi
+	php composer.phar install --prefer-dist --optimize-autoloader
+
+.PHONY: all
