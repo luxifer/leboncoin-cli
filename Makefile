@@ -7,7 +7,7 @@ dist:
 	cd /tmp/$(TARGET) $$ \
 		rm -rf .git && \
 		find config -type f -name "*.yml" -exec rm {} \; && \
-		rm var/database.sqlite
+		rm -f var/database.sqlite
 	cd /tmp && \
 		tar czf $(TARGET).tar.gz $(TARGET)
 	mv /tmp/$(TARGET).tar.gz $(ROOT)
