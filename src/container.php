@@ -48,7 +48,9 @@ $app['guzzle'] = function ($app) {
 
     if (null !== $proxy = $app['configuration']['leboncoin']['proxy']) {
         $guzzle->setConfig(array(
-            'proxy' => $proxy
+            'request.options' => array(
+                'proxy' => $proxy
+            )
         ));
     }
 
