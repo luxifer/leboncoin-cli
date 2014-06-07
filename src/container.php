@@ -69,7 +69,7 @@ $app['mailer'] = function ($app) {
     $config = $app['configuration']['mailer']['swift'];
 
     if ($config['type'] == 'smtp') {
-        $transport = \Swift_SmtpTransport::newInstance($config['host'], $config['host'], $config['security']);
+        $transport = \Swift_SmtpTransport::newInstance($config['host'], $config['port'], $config['security']);
 
         if (null !== $config['user']) {
             $transport->setUsername($config['user']);
