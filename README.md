@@ -69,7 +69,5 @@ Setup a cron task with the following command:
 ## TODO
 
 * Setup a proxy (port 80 closed for OVH and Online IPs) **[urgent]**
-
-## TODO later
-
 * Interactive configuration builder
+* Initialize config and store it under the `HOME` directory
