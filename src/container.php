@@ -40,7 +40,13 @@ $app['configuration'] = function ($app) {
 };
 
 $app['db'] = function($app) {
-    return DriverManager::getConnection($app['configuration']['database']['connection'], new Configuration());
+    $config = $app['configuration']['database']['connection'];
+
+    if (isset($config['path'])) {
+        $config['path'] = substr($config['path'], 0, 1) == '/' ? $config['path'] : __DIR__.'/../'.$config['path'];
+    }
+
+    return DriverManager::getConnection($config, new Configuration());
 };
 
 $app['guzzle'] = function ($app) {
