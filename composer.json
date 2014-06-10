@@ -1,5 +1,8 @@
 {
     "name": "luxifer/leboncoin-cli",
+    "description": "Command line interface to get fetch and be notified for leboncoin bids",
+    "keywords": ["cli", "leboncoin", "email", "alert"],
+    "license": "MIT",
     "require": {
         "guzzle/guzzle": "~3.9",
         "symfony/console": "*",
@@ -17,7 +20,8 @@
     "authors": [
         {
             "name": "Florent Viel",
-            "email": "florent.viel69@gmail.com"
+            "email": "florent.viel69@gmail.com",
+            "homepage": "http://florentviel.com"
         }
     ],
     "autoload": {
