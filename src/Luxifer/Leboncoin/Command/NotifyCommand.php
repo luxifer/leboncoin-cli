@@ -58,7 +58,7 @@ class NotifyCommand extends ContainerAwareCommand
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('Notification from '.sprintf('%s %s', $this->getApplication()->getName(), $this->getApplication()->getVersion()))
-                ->setFrom($config['leboncoin']['from_email'])
+                ->setFrom(array($config['leboncoin']['from_email'] => $this->getApplication()->getName()))
                 ->setTo($config['leboncoin']['to_email'])
                 ->setBody($bodyHtml, 'text/html')
                 ->addPart($bodyText, 'text/plain')
