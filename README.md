@@ -43,19 +43,19 @@ A new command to build this file is in the pipe.
 ### Fetch bids
 
 ```
-bin/console fetch
+bin/leboncoin-cli fetch
 ```
 
 ### Notify bids
 
 ```
-bin/console notify
+bin/leboncoin-cli notify
 ```
 
 ### Help
 
 ```
-bin/console help
+bin/leboncoin-cli help
 ```
 
 ## Cron
@@ -63,7 +63,7 @@ bin/console help
 Setup a cron task with the following command:
 
 ```
-/path/to/installation/bin/console notify -q
+/path/to/installation/bin/leboncoin-cli notify -q
 ```
 
 ## TODO
